@@ -17,7 +17,7 @@ loginController.login = async (req, res) => {
 
   try {
     // Get the user based on email
-    const user = await loginModel.getUserByEmail(email);  // Adjusted to directly fetch a user
+    const user = await loginModel.getUserByEmail(email);  
 
     if (!user) {
       return res.status(401).json({ error: "Invalid email." });

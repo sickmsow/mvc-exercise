@@ -44,3 +44,13 @@ exports.add = async ({ name, email, password }) => {
     [name, email, password]
   );
 };
+
+exports.getUserByEmail = async (email) => {
+  try {
+    const { rows } = await db.query('SELECT * FROM "user" WHERE email = $1', [email]);
+    return rows.length ? rows[0] : null;
+  } catch (error) {
+    console.error("Error fetching user by email:", error);
+    throw error;
+  }
+};
